@@ -1,0 +1,19 @@
+#!/bin/bash
+
+action=$1
+text=$2
+shift
+
+[ "$text" = "usage" ] && {
+    echo "Customized Notion add:"
+    echo "This will call the default add and "
+    echo "replicate the todo in Notion Task List configured "
+    echo "by NOTION_TASK_LIST_URL=''"
+    echo "todo.sh nadd \"My job to be done\" @myjobcontext"
+    exit
+}
+
+[ "$action" = "nadd" ] && {
+    todo.sh addm "$text" &&
+    todonotion add "$text"
+}

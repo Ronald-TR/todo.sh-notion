@@ -1,0 +1,23 @@
+#!/bin/bash
+
+action=$1
+shift
+
+text=$1
+shift
+
+[ "$text" = "usage" ] && {
+    echo "Customized Notion done:"
+    echo "This will call the default done and "
+    echo "move all the cards in Notion Task List to Done"
+    echo "by NOTION_TASK_LIST_URL=''"
+    echo "based on @context or exactly card name given."
+    echo "todo.sh ndoc \"My job to be done\""
+    echo "todo.sh ndoc \"@context\" -- for all cards in todo with @context"
+    exit
+}
+
+[ "$action" = "ndoc" ] && {
+    indexes=`todo.sh ls $text | head -n -2 | cut -d ' ' -f1`
+    todonotion done "$text" && todo.sh done $indexes
+}
