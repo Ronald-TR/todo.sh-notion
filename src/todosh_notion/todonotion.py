@@ -8,17 +8,40 @@ page = client.get_collection_view(TASK_LIST_URL)
 
 
 def add(task: str) -> None:
+    """Create a task in To Do
+    Task List
+
+    Parameters
+    ----------
+    task : str
+        Card title
+    """
     row = page.collection.add_row()
     row.title = task
     row.status = "To Do"
 
 
 def done(task: str) -> None:
+    """Move all the tasks that have the "task" name into their titles to Done
+
+    Parameters
+    ----------
+    task : str
+        Card title
+    """
     for row in page.collection.get_rows(search=task):
         row.status = "Done"
 
 
 def delete(task: str) -> None:
+    """Like "done" command, but performs a delete action.
+    Delete all the tasks that have the "task" name into their titles
+
+    Parameters
+    ----------
+    task : str
+        Card title
+    """
     for row in page.collection.get_rows(search=task):
         row.remove()
 
