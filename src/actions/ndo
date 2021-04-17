@@ -9,12 +9,13 @@ shift
     echo "move all the cards in Notion Task List to Done"
     echo "by NOTION_TASK_LIST_URL=''"
     echo "based on todo.sh task id."
-    echo "todo.sh ndo \"My job to be done\""
+    echo "todo.sh ndo 1 2 3"
     exit
 }
 
 [ "$action" = "ndo" ] && {
     for i in $@; do
-        todo.sh ls $i | head -1 | cut -d ' ' -f2- | todonotion done "$i" && todo.sh done $i
+        todo.sh ls $i | head -1 | cut -d ' ' -f2- | todonotion done
+        todo.sh done $i
     done
 }

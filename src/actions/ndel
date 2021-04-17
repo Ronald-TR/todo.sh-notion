@@ -1,0 +1,22 @@
+#!/bin/bash
+
+action=$1
+shift
+
+text=$1
+shift
+
+[ "$text" = "usage" ] && {
+    echo "Customized Notion done:"
+    echo "This will call the default del and "
+    echo "delete the cards in Notion Task Lists"
+    echo "todo.sh ndel 1 2 3"
+    exit
+}
+
+[ "$action" = "ndel" ] && {
+    for i in $@; do
+        todo.sh ls $i | head -1 | cut -d ' ' -f2- | todonotion delete
+        todo.sh done $i
+    done
+}
