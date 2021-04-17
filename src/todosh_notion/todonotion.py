@@ -5,10 +5,8 @@ from argparse import Namespace
 from pathlib import Path
 
 from notion.client import NotionClient
-from settings import TASK_LIST_URL, TOKEN_V2
 
-client = NotionClient(token_v2=TOKEN_V2)
-page = client.get_collection_view(TASK_LIST_URL)
+from todosh_notion.settings import TASK_LIST_URL, TOKEN_V2
 
 
 def add(arg: Namespace) -> None:
@@ -20,6 +18,9 @@ def add(arg: Namespace) -> None:
     arg : Namespace
         Arg with card title
     """
+    client = NotionClient(token_v2=TOKEN_V2)
+    page = client.get_collection_view(TASK_LIST_URL)
+
     row = page.collection.add_row()
     row.title = arg.title
     row.status = "To Do"
@@ -33,6 +34,9 @@ def done(arg: Namespace) -> None:
     arg : Namespace
         Arg with card title
     """
+    client = NotionClient(token_v2=TOKEN_V2)
+    page = client.get_collection_view(TASK_LIST_URL)
+
     for row in page.collection.get_rows(search=arg.title):
         row.status = "Done"
 
@@ -46,6 +50,9 @@ def delete(arg: Namespace) -> None:
     arg : Namespace
         Arg with card title
     """
+    client = NotionClient(token_v2=TOKEN_V2)
+    page = client.get_collection_view(TASK_LIST_URL)
+
     for row in page.collection.get_rows(search=arg.title):
         row.remove()
 
