@@ -3,6 +3,7 @@
 Integration between todo.sh and Notion Task Lists!
 
 ![demonstration](examples/demonstration.gif)
+![](../examples/demonstration.gif)
 
 
 **Motivation**:
@@ -21,6 +22,7 @@ To catch the `NOTION_TOKEN_V2` you need to go into https://notion.so page and en
 find a token_v2 in cache and copy the value.
 
 ![token](examples/notion_token.png)
+![](../examples/notion_token.png)
 
 To catch the `NOTION_TASK_LIST_URL` it's quite simple, just navigate to your Task List and copy the URL.
 
