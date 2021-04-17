@@ -85,13 +85,13 @@ def run():
         "add", add_help=False, help="Add a task in To Do"
     )
     parser_add.add_argument("title")
-    parser_add.set_defaults(func=delete)
+    parser_add.set_defaults(func=add)
 
     parser_done = subparsers.add_parser(
         "done", add_help=False, help="Mark the task as Done"
     )
     parser_done.add_argument("title")
-    parser_done.set_defaults(func=delete)
+    parser_done.set_defaults(func=done)
 
     parser_delete = subparsers.add_parser(
         "delete", add_help=False, help="Delete the task"
