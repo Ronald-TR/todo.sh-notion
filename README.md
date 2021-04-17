@@ -4,7 +4,12 @@ Integration between todo.sh and Notion Task Lists!
 
 ![demonstration](examples/demonstration.gif)
 
-## Pre Configuration
+
+**Motivation**:
+
+To helps the `todo.sh` users to sync your tasks with Notion. Without quiting the terminal or doing something extra effort. For me, who have focus problems, it helps a lot.
+
+## Pre configuration
 
 You need to provide two environment variables to allow the integration (put it in your .bashrc if you want):
 
