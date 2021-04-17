@@ -46,7 +46,7 @@ def delete(task: str) -> None:
         row.remove()
 
 
-if __name__ == "__main__":
+def run():
     parser = argparse.ArgumentParser(description="Manage cards in Notion task list")
     subparsers = parser.add_subparsers(title="actions")
 
@@ -70,3 +70,7 @@ if __name__ == "__main__":
 
     argx = parser.parse_args()
     argx.func(argx.task)
+
+
+if __name__ == "__main__":
+    run()
