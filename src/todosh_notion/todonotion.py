@@ -71,7 +71,10 @@ def configure(arg: Namespace):
     dest_path = os.path.join(str(Path().home()), ".todo.actions.d")
     os.makedirs(dest_path, exist_ok=True)
     for action in os.listdir(actions_dir):
-        shutil.copy(os.path.join(actions_dir, action), dest_path)
+        abs_action = os.path.join(actions_dir, action)
+        if os.path.isfile(abs_action) and not os.path.splitext(action)[-1]:
+            shutil.copy(abs_action, dest_path)
+    os.system(f"chmod +x {dest_path}/*")
 
 
 def run():
