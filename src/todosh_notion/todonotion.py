@@ -25,7 +25,7 @@ def add(arg: Namespace) -> None:
     row.title = arg.title
     row.status = "To Do"
     _splt = arg.title.split("@")
-    if len(_splt) > 2:
+    if len(_splt) >= 2:
         row.property = _splt[-1]
 
 
