@@ -24,6 +24,9 @@ def add(arg: Namespace) -> None:
     row = page.collection.add_row()
     row.title = arg.title
     row.status = "To Do"
+    _splt = arg.title.split("@")
+    if len(_splt) > 2:
+        row.property = _splt[-1]
 
 
 def done(arg: Namespace) -> None:
@@ -55,6 +58,15 @@ def delete(arg: Namespace) -> None:
 
     for row in page.collection.get_rows(search=arg.title):
         row.remove()
+
+
+def organize():
+    client = NotionClient(token_v2=TOKEN_V2)
+    page = client.get_collection_view(TASK_LIST_URL)
+
+    for row in page.collection.get_rows():
+        property = row.name.split("@")[-1]
+        row.property = property
 
 
 def configure(arg: Namespace):
